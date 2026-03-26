@@ -1,0 +1,609 @@
+/* ====================================
+   CHARITY: WATER - WATER DROP GAME
+   Brand Guidelines Applied
+   ==================================== */
+
+/* Charity: water Brand Colors & Fonts
+
+Primary Colors:
+- Yellow:     #FFC907 (Primary brand color)
+- Blue:       #2E9DF7 (Secondary brand color)
+
+Secondary Colors:
+- Light Blue: #8BD1CB (Accent)
+- Green:      #4FCB53 (Success/Good)
+- Orange:     #FF902A (Warning)
+- Red:        #F5402C (Danger/Bad)
+- Dark Green: #159A48 (Success emphasis)
+- Pink:       #F16061 (Alert)
+
+Fonts:
+- Primary: Proxima Nova or Avenir
+- Fallback: Arial, sans-serif
+
+*/
+
+/* ====== RESET & BASE STYLES ====== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Proxima Nova', 'Avenir', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8f4ff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* ====== MAIN WRAPPER ====== */
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* ====== HEADER SECTION ====== */
+
+.header-section {
+    text-align: center;
+    width: 100%;
+}
+
+.logo-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cw-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(46, 157, 247, 0.1));
+}
+
+.game-title {
+    color: #2E9DF7;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.game-tagline {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+/* ====== SCORE PANEL ====== */
+
+.score-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 18px 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(46, 157, 247, 0.08);
+    border: 2px solid #FFC907;
+    flex-wrap: wrap;
+}
+
+.score-display {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.score {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E9DF7;
+}
+
+#score {
+    color: #FFC907;
+    font-size: 24px;
+}
+
+.combo-display {
+    font-size: 14px;
+    color: #4FCB53;
+    font-weight: 700;
+    min-height: 24px;
+    animation: pulse 0.5s ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.timer {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E9DF7;
+    min-width: 70px;
+    text-align: center;
+    padding: 8px 12px;
+    background-color: rgba(255, 201, 7, 0.1);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.timer.warning {
+    background-color: #F5402C;
+    color: white;
+    animation: pulse 0.8s infinite;
+}
+
+/* ====== BUTTON STYLES ====== */
+
+.btn {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-start {
+    background: linear-gradient(135deg, #2E9DF7 0%, #1e7bc4 100%);
+    color: white;
+}
+
+.btn-start:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(46, 157, 247, 0.3);
+}
+
+.btn-start:active {
+    transform: translateY(0);
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #FFC907 0%, #e6b300 100%);
+    color: #333;
+}
+
+.btn-reset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 201, 7, 0.3);
+}
+
+.btn-reset:active {
+    transform: translateY(0);
+}
+
+/* ====== GAME CONTAINER ====== */
+
+#game-container {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(180deg, #e8f4ff 0%, #d0e8f2 100%);
+    border: 3px solid #2E9DF7;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(46, 157, 247, 0.15);
+}
+
+/* ====== GAME INSTRUCTIONS ====== */
+
+.game-instructions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    font-weight: 500;
+    z-index: 10;
+    line-height: 1.8;
+}
+
+.drop-legend {
+    display: inline-block;
+    margin: 8px 0;
+    font-size: 16px;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.drop-legend:first-of-type {
+    margin-left: 0;
+}
+
+/* ====== WATER DROPS ====== */
+
+.water-drop {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #2E9DF7 0%, #1e7bc4 100%);
+    border-radius: 50%;
+    animation: dropFall linear forwards;
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(46, 157, 247, 0.4), inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.water-drop:hover {
+    transform: scale(1.15);
+    filter: brightness(1.1);
+}
+
+.water-drop.caught {
+    animation: dropCaught 0.4s ease forwards;
+}
+
+.bad-drop {
+    background: linear-gradient(135deg, #F5402C 0%, #d63418 100%);
+    box-shadow: 0 4px 12px rgba(245, 64, 44, 0.4), inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Drop fall animation */
+@keyframes dropFall {
+    from {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 1;
+    }
+}
+
+/* Drop caught animation */
+@keyframes dropCaught {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2) rotate(90deg);
+    }
+    100% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* ====== FEEDBACK MESSAGE ====== */
+
+.feedback-message {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    padding: 14px 24px;
+    background-color: #4FCB53;
+    color: white;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(79, 203, 83, 0.3);
+    border-left: 4px solid #159A48;
+}
+
+.feedback-message.show {
+    animation: slideIn 0.5s ease forwards;
+}
+
+.feedback-message.good {
+    background-color: #4FCB53;
+    border-left-color: #159A48;
+}
+
+.feedback-message.bad {
+    background-color: #F5402C;
+    border-left-color: #d63418;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+/* ====== SCORE POPUP ====== */
+
+.score-popup {
+    position: absolute;
+    font-weight: 700;
+    font-size: 20px;
+    pointer-events: none;
+    animation: popUpAndFade 1s ease forwards;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.score-popup.positive {
+    color: #4FCB53;
+}
+
+.score-popup.negative {
+    color: #F5402C;
+}
+
+@keyframes popUpAndFade {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-60px) scale(0.5);
+    }
+}
+
+/* ====== GAME OVER SCREEN ====== */
+
+.game-over-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.game-over-content {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: popIn 0.5s ease;
+    border-top: 5px solid #2E9DF7;
+}
+
+#game-over-title {
+    font-size: 36px;
+    color: #2E9DF7;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+#final-score {
+    font-size: 32px;
+    color: #FFC907;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.game-message {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+    min-height: 50px;
+    line-height: 1.6;
+}
+
+.celebration {
+    min-height: 70px;
+    margin-bottom: 30px;
+    font-size: 48px;
+    animation: celebrationAnimation 0.8s ease;
+}
+
+@keyframes celebrationAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ====== CONFETTI PARTICLES ====== */
+
+.confetti {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .game-wrapper {
+        gap: 20px;
+    }
+
+    .game-title {
+        font-size: 36px;
+    }
+
+    .game-tagline {
+        font-size: 14px;
+    }
+
+    .cw-logo {
+        height: 40px;
+    }
+
+    .score-panel {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .score-display {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .score, .timer {
+        width: 100%;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    #game-container {
+        border-width: 2px;
+        border-radius: 12px;
+    }
+
+    .game-instructions {
+        font-size: 16px;
+    }
+
+    .drop-legend {
+        font-size: 14px;
+    }
+
+    .feedback-message {
+        top: 20px;
+        right: 20px;
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    .game-over-content {
+        padding: 30px 20px;
+    }
+
+    #game-over-title {
+        font-size: 28px;
+    }
+
+    #final-score {
+        font-size: 24px;
+    }
+
+    .celebration {
+        font-size: 40px;
+        min-height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 28px;
+    }
+
+    .game-tagline {
+        font-size: 13px;
+    }
+
+    .cw-logo {
+        height: 35px;
+    }
+
+    .score-panel {
+        padding: 15px 16px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    #game-over-title {
+        font-size: 24px;
+    }
+
+    #final-score {
+        font-size: 20px;
+    }
+
+    .game-over-content {
+        padding: 25px 15px;
+    }
+
+    .celebration {
+        font-size: 32px;
+        min-height: 50px;
+    }
+}
