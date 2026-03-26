@@ -4,16 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Drop Game - Clean Water for All</title>
+    <!-- Google Fonts: Nunito is visually close to Proxima Nova / Avenir -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-wrapper">
         <div class="header-section">
             <div class="logo-container">
-                <img src="img/cw_logo-horizontal.png" alt="charity: water" class="cw-logo">
+                <img src="img/cw_logo-horizontal.png" alt="charity: water" class="cw-logo"
+                     onerror="this.style.display='none'; document.getElementById('cw-logo-text').style.display='block'">
+                <span id="cw-logo-text" class="cw-logo-text" style="display:none;">charity: water</span>
             </div>
             <h1 class="game-title">Water Drop</h1>
             <p class="game-tagline">Every drop matters. Catch clean water, avoid contaminated drops, and help provide clean water access for all.</p>
+        </div>
+
+        <!-- Difficulty Selector -->
+        <div class="difficulty-section" id="difficulty-section">
+            <p class="difficulty-label">Choose Difficulty:</p>
+            <div class="difficulty-buttons">
+                <button class="btn btn-difficulty" id="btn-easy" data-difficulty="easy">
+                    💧 Easy
+                    <span class="diff-desc">45s · Slow drops · Win at 50pts</span>
+                </button>
+                <button class="btn btn-difficulty active" id="btn-normal" data-difficulty="normal">
+                    🌊 Normal
+                    <span class="diff-desc">30s · Medium · Win at 80pts</span>
+                </button>
+                <button class="btn btn-difficulty" id="btn-hard" data-difficulty="hard">
+                    ⚡ Hard
+                    <span class="diff-desc">20s · Fast drops · Win at 100pts</span>
+                </button>
+            </div>
         </div>
 
         <div class="score-panel">
@@ -22,15 +47,20 @@
                 <div class="combo-display" id="combo-display"></div>
             </div>
             <div class="timer">⏱️ <span id="time">30</span>s</div>
-            <button id="start-btn" class="btn btn-start">Start Game</button>
-            <button id="reset-btn" class="btn btn-reset" style="display: none;">Reset</button>
+            <div class="panel-buttons">
+                <button id="start-btn" class="btn btn-start">Start Game</button>
+                <button id="reset-btn" class="btn btn-reset" style="display: none;">Reset</button>
+            </div>
         </div>
+
+        <!-- Milestone Banner -->
+        <div id="milestone-banner" class="milestone-banner" style="display:none;"></div>
 
         <div id="game-container">
             <div class="game-instructions" id="instructions">
                 Click START to begin!<br>
-                <span class="drop-legend">💙 Blue = Good (+10 points)</span><br>
-                <span class="drop-legend">❌ Red = Bad (-5 points)</span>
+                <span class="drop-legend">💙 Blue = Clean Water (+10 pts)</span><br>
+                <span class="drop-legend">☣️ Red = Contaminated (-5 pts)</span>
             </div>
         </div>
 
@@ -48,6 +78,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Charity: Water Footer -->
+    <footer class="cw-footer">
+        <div class="footer-inner">
+            <p class="footer-mission">
+                <strong>charity: water</strong> is a nonprofit organization bringing clean and safe drinking water to people in developing countries.
+            </p>
+            <nav class="footer-links" aria-label="charity: water links">
+                <a href="https://www.charitywater.org" target="_blank" rel="noopener noreferrer">🌐 Visit charity: water</a>
+                <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener noreferrer">💛 Donate Now</a>
+                <a href="https://www.charitywater.org/the-spring" target="_blank" rel="noopener noreferrer">🌱 Join The Spring</a>
+            </nav>
+            <p class="footer-note">100% of public donations go directly to water projects.</p>
+        </div>
+    </footer>
     
     <script src="script.js"></script>
 </body>
