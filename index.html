@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charity Water Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+      <div class="logo">💧</div>
+      <h1>Charity Water</h1>
+      <p class="tagline">Help bring clean water to villages in need!</p>
+      <div class="instructions">
+        <h3>How to Play</h3>
+        <ul>
+          <li>🚶 Move your character with <strong>Arrow Keys</strong> or <strong>WASD</strong></li>
+          <li>💧 Collect water drops to fill your bucket</li>
+          <li>🏠 Deliver water to villages before time runs out</li>
+          <li>⚠️ Avoid muddy puddles — they contaminate your water</li>
+          <li>⭐ Complete all villages to win the level!</li>
+        </ul>
+      </div>
+      <button id="start-btn" class="btn btn-primary">Start Game</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div id="hud">
+        <div class="hud-item">
+          <span class="hud-label">💧 Water</span>
+          <div class="bar-container">
+            <div id="water-bar" class="bar water-bar"></div>
+          </div>
+          <span id="water-text">0 / 10</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">🏠 Villages</span>
+          <span id="villages-text">0 / 3</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">⏱ Time</span>
+          <span id="timer-text">60</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">⭐ Score</span>
+          <span id="score-text">0</span>
+        </div>
+      </div>
+      <canvas id="game-canvas"></canvas>
+      <div id="level-banner" class="banner hidden"></div>
+      <div id="message-box" class="message-box hidden"></div>
+    </div>
+
+    <!-- Win Screen -->
+    <div id="win-screen" class="screen">
+      <div class="logo">🎉</div>
+      <h1>You Did It!</h1>
+      <p class="tagline">You brought clean water to all the villages!</p>
+      <p class="impact-text">
+        In real life, <strong>charity: water</strong> has funded over
+        <strong>120,000 water projects</strong> in 29 countries,<br />
+        giving clean water to <strong>millions of people</strong>.
+      </p>
+      <div id="win-score" class="big-score"></div>
+      <button id="next-level-btn" class="btn btn-primary">Next Level</button>
+      <button id="win-menu-btn" class="btn btn-secondary">Main Menu</button>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-screen" class="screen">
+      <div class="logo">💧</div>
+      <h1>Time's Up!</h1>
+      <p class="tagline">The villages still need water — try again!</p>
+      <div id="gameover-score" class="big-score"></div>
+      <button id="retry-btn" class="btn btn-primary">Try Again</button>
+      <button id="gameover-menu-btn" class="btn btn-secondary">Main Menu</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
