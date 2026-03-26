@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Drop Game - Clean Water for All</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <div class="header-section">
+            <div class="logo-container">
+                <img src="img/cw_logo-horizontal.png" alt="charity: water" class="cw-logo">
+            </div>
+            <h1 class="game-title">Water Drop</h1>
+            <p class="game-tagline">Every drop matters. Catch clean water, avoid contaminated drops, and help provide clean water access for all.</p>
+        </div>
+
+        <div class="score-panel">
+            <div class="score-display">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="combo-display" id="combo-display"></div>
+            </div>
+            <div class="timer">⏱️ <span id="time">30</span>s</div>
+            <button id="start-btn" class="btn btn-start">Start Game</button>
+            <button id="reset-btn" class="btn btn-reset" style="display: none;">Reset</button>
+        </div>
+
+        <div id="game-container">
+            <div class="game-instructions" id="instructions">
+                Click START to begin!<br>
+                <span class="drop-legend">💙 Blue = Good (+10 points)</span><br>
+                <span class="drop-legend">❌ Red = Bad (-5 points)</span>
+            </div>
+        </div>
+
+        <!-- Feedback message that appears when you click a drop -->
+        <div id="feedback-message" class="feedback-message"></div>
+
+        <!-- Game over screen -->
+        <div id="game-over-screen" class="game-over-screen" style="display: none;">
+            <div class="game-over-content">
+                <h2 id="game-over-title">Game Over!</h2>
+                <p id="final-score">Final Score: 0</p>
+                <p id="game-message" class="game-message"></p>
+                <div class="celebration" id="celebration"></div>
+                <button id="play-again-btn" class="btn btn-start">Play Again</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
